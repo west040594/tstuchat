@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:fragment="common_header(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Title</title>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script th:inline="javascript">
+        var frontendData = [[${frontendData}]];
+    </script>
+</head>
+<body>
+    <section th:fragment="nav-section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <a class="navbar-brand" th:href="@{/}">ChatApp</a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/home}">Home</a></li>
+                    <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                    <li sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link" th:href="@{/register}">Registration</a></li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/chats}">Chats</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+</body>
+</html>

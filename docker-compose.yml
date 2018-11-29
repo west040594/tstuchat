@@ -1,0 +1,45 @@
+version: "2"
+services:
+  node:
+    image: node:10-alpine
+    volumes:
+        - ./webpack/app:/app
+        - ./webpack/app/node_modules:/app/node_modules
+        - ./webpack/app/package.json:/app/package.json
+        - ./webpack/app/webpack.config.js:/app/webpack.config.js
+        - ./webpack/app/js:/app/js
+
+    ports:
+      - "8081:8081"
+    working_dir: /app
+    command: ["npm", "start"]
+
+  rabbitmq:
+    image: "pcloud/rabbitmq-stomp:3"
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+        - "15672:15672"
+        - "5672:5672"
+        - "61613:61613"
+    volumes:
+        - ./rabbit:/var/lib/rabbitmq
+    environment:
+        - RABBITMQ_DEFAULT_USER=guest
+        - RABBITMQ_DEFAULT_PASS=guest
+   
+  dbpostgres:
+    image: postgres:9.5
+    container_name: dbpostgres
+    hostname: dbpostgres
+    restart: always
+    environment:
+      POSTGRES_USER: west223
+      POSTGRES_PASSWORD: westwest223
+      POSTGRES_DB: chatdb
+    ports:
+        - "5434:5432"
+    volumes:
+        - ./postgres/lib:/var/lib/postgresql
+        - ./postgres/log:/var/log/postgresql
+        - ./postgres/etc:/etc/postgresql

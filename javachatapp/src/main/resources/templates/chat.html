@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layout :: common_header(~{::title})">
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+<body>
+
+    <section th:replace="layout :: nav-section"></section>
+    <div class="my-md-4 container">
+        <h2 th:text="${frontendData.chat.name}">Chat name</h2>
+        <p th:text="${frontendData.chat.description}">Chat description</p>
+        <div id="chatAppVue"></div>
+
+    </div>
+    <script src="http://0.0.0.0:8081/bundle.js"></script>
+</body>
+</html>
