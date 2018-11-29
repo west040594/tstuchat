@@ -14,10 +14,11 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 
 group = 'com.tstu'
-version = '0.0.1-SNAPSHOT'
+version = '1.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -25,6 +26,21 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.tstu.chatapp.ChatappApplication'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
 
 ext {
     springCloudVersion = 'Greenwich.M3'
