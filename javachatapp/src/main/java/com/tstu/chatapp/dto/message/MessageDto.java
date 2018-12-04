@@ -7,7 +7,9 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Data
 public class MessageDto {
@@ -21,4 +23,6 @@ public class MessageDto {
     private UserDto user;
     @NotNull
     private ChatDto chat;
+
+
 }

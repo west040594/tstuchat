@@ -11,8 +11,9 @@
 
         <div th:each="chat : ${chatList}">
             <div class="card">
-                <div class="card-header" th:text="${chat.createdDate}">
-                    Created Date
+                <div class="card-header">
+                    <span th:text="${chat.createdDateFormat}">Created Date</span>
+                    <span th:text="${chat.user.username}">Chat Username Owner</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title" th:text="${chat.name}">Chat Name</h5>

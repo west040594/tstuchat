@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label for="type" class="control-label">Type</label>
-                <select id="type" th:field="*{type}">
+                <select id="type" class="custom-select" th:field="*{type}">
                     <option th:each="typeValue : ${T(com.tstu.chatapp.enums.ChatType).values()}" th:value="${typeValue}"  th:text="${typeValue}"></option>
                 </select>
                 <p th:each="error : ${#fields.errors('type')}"

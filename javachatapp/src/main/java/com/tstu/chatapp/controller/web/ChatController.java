@@ -80,4 +80,13 @@ public class ChatController {
             return "redirect:/chats/" + chatId;
         }
     }
+
+    @PostMapping("/delete/{id}")
+    public String processChatDelete(@PathVariable Long id,  @AuthenticationPrincipal User user) {
+        if(chatService.findChatById(id).getUser().equals(user)) {
+            chatService.deleteChatById(id);
+            return "redirect:/chats";
+        }
+        return "redirect:/chats/{id}";
+    }
 }

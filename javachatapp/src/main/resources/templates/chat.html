@@ -11,6 +11,17 @@
     <div class="my-md-4 container">
         <h2 th:text="${frontendData.chat.name}">Chat name</h2>
         <p th:text="${frontendData.chat.description}">Chat description</p>
+        <div class="row mb-3">
+            <div class="col-md">
+                <p class="d-inline">Owner: <span th:text="${frontendData.chat.user.username}">Owner Name</span></p>
+                <form method="post" th:action="@{'/chats/delete/' + ${frontendData.chat.id}}" id="registerForm" class="d-inline"
+                      th:if="${frontendData.chat.user == frontendData.user}">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+
+
         <div id="chatAppVue"></div>
 
     </div>
