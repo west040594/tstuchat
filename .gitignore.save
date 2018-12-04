@@ -1,8 +1,0 @@
-.idea
-postgres/
-rabbit/
-.gitignore
-javachatapp/.idea
-javachatapp/out
-avachatapp/.grudle
-
