@@ -6,6 +6,7 @@ import com.tstu.chatapp.service.message.MessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +18,12 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequestMapping("/message")
-public class MessageRestConroller {
+public class MessageRestController {
 
     private MessageService messageService;
     private ModelMapper modelMapper;
 
-    public MessageRestConroller(MessageService messageService, ModelMapper modelMapper) {
+    public MessageRestController(MessageService messageService, ModelMapper modelMapper) {
         this.messageService = messageService;
         this.modelMapper = modelMapper;
     }
