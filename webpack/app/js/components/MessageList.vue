@@ -1,12 +1,7 @@
 <template>
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Created</th>
-            <th scope="col">User</th>
-            <th scope="col">Text</th>
-        </tr>
+
         </thead>
         <tbody>
         <message-row v-for="message in messages"
